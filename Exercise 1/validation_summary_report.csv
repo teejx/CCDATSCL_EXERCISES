@@ -1,0 +1,4 @@
+Rule,Violations
+Price <= 0,0
+Host ID is Null,0
+Minimum Nights < 1,0
