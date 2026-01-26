@@ -1,0 +1,150 @@
+Updated Study Design (Daily, Single Subject)
+Study Type
+
+Daily longitudinal self-study (observational study)
+
+Revised Research Question
+
+Does daily exercise influence perceived stress levels over time in a college student?
+
+(Notice: “a college student” — this makes the single-subject design academically correct.)
+
+Variables (Daily)
+Independent Variable
+
+Exercise today? (Yes = 1, No = 0)
+
+Dependent Variable
+
+Daily stress level (1–5)
+
+Supporting Variables
+
+Sleep hours (previous night)
+
+Academic workload today
+
+Light
+
+Medium
+
+Heavy
+
+(Optional but good) Mood (1–5)
+
+Data Collection Plan
+Duration
+
+30–60 days (2 months is perfect)
+
+Daily Entry (5 minutes max)
+
+Every night, record:
+
+Did you exercise today? (Yes/No)
+
+Stress level today (1–5)
+
+Sleep hours last night
+
+Academic workload today (Light/Medium/Heavy)
+
+Use:
+
+Notes app + later transfer
+
+OR Google Sheets
+
+OR directly enter into CSV
+
+Dataset Structure (Daily CSV)
+Day,Exercise,Stress,Sleep,Workload
+1,1,3,7.5,Medium
+2,0,4,6.0,Heavy
+3,1,2,8.0,Light
+4,0,5,5.5,Heavy
+...
+
+Graph 1: Scatter Plot (Daily Exercise vs Stress)
+
+Even with binary exercise, this works.
+
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("daily_exercise_stress.csv")
+
+plt.figure(figsize=(7,5))
+sns.scatterplot(
+    data=df,
+    x="Exercise",
+    y="Stress",
+    jitter=0.1
+)
+
+plt.xticks([0,1], ["No Exercise", "Exercise"])
+plt.title("Daily Exercise vs Stress Level")
+plt.ylabel("Stress Level (1–5)")
+plt.show()
+
+Graph 2: Line Plot (Stress Over Time)
+
+This becomes very powerful visually.
+
+plt.figure(figsize=(8,5))
+plt.plot(df["Day"], df["Stress"], marker='o')
+
+plt.title("Daily Stress Levels Over Time")
+plt.xlabel("Day")
+plt.ylabel("Stress Level (1–5)")
+plt.show()
+
+Extra (Highly Recommended): Mean Stress Comparison
+
+This is simple and looks great.
+
+mean_stress = df.groupby("Exercise")["Stress"].mean()
+
+mean_stress.plot(kind="bar", color=["tomato", "seagreen"])
+plt.xticks([0,1], ["No Exercise", "Exercise"], rotation=0)
+plt.title("Average Stress on Exercise vs Non-Exercise Days")
+plt.ylabel("Average Stress Level")
+plt.show()
+
+How to Write This in Your Paper (Key Framing)
+Methodology (Important Line)
+
+This study used a daily self-reported longitudinal design, where a single college student recorded exercise behavior and perceived stress levels over a period of 60 days.
+
+Limitations (Professors LOVE This)
+
+Single participant
+
+Self-reported data
+
+Results not generalizable
+
+(Mentioning these increases your grade.)
+
+Why This Is Actually a Strong Choice
+
+✔ Extremely clean data
+✔ No missing responses
+✔ Clear cause–effect discussion
+✔ Shows consistency and effort
+✔ Easy to visualize trends
+
+Want to level this up slightly?
+
+I can:
+
+Add rolling averages (7-day stress trend)
+
+Help you write the Results + Discussion sections
+
+Help you phrase this so it sounds very academic
+
+Add a sleep-controlled graph
+
+Tell me what you want next — you’re setting this up smartly 👌
